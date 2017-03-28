@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+.qr_code .code,
+.viwepager-box .top-tip li,
+.function .fun-ico,
+.app-ft .tit{ background:url(../pic/app_sprite.png) no-repeat -9999px 0;}
+.top-wrap{ height:717px; background:#408ddd url(../pic/app-intr-top.jpg) no-repeat center 0;}
+.top-box{ position:relative; max-width:1200px; min-width:960px; width:90%;_width:1200px; padding-top:12px; margin:0 auto;}
+.top-box .ph-logo{ display:block; width:342px; height:47px; margin-left:2px; background:url(../pic/ph-logo.png) no-repeat 0 0; text-indent:-9999px;}
+.top-left { width:435px; margin-top:110px;}
+.top-left h2{ width:331px; height:37px; background:url(../pic/app_intro_tit.png) no-repeat 0 0; text-indent:-9999px; _background:none; _text-indent:0; font-size:34px; color:#fff; line-height:34px;}
+.top-left p.app-info{ margin-top:10px; font-size:16px; color:#fff; line-height:30px;}
+.top-left .qr_code{ margin-top:40px;}
+.qr_code .qr_downl,
+.qr_code .qr_wx{ width:202px; height:234px; background:#d7e0e8}
+.qr_code .qr_downl{margin-right:30px; }
+.qr_code .code{ display:block; width:176px; height:176px; margin:14px auto 0;}
+.qr_downl .code{ background-position:0 -124px;}
+.qr_code p{ font-size:16px; text-align:center; color:#305c9a; margin-top:12px;}
+
+.qr_wx .code{ background-position:-197px -124px;}
+.top-right{ position:absolute; top:116px; right:20px; width:476px;}
+.viwepager-box{ position:relative; width:336px; height:751px; }
+.viwepager-main{width:336px; height:669px; padding-top:82px; background:url(../pic/phone_bg.png) no-repeat 0 0;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://portal.ebooking.elong.com/supplier/resources/css/pic/phone_bg.png',sizingMethod='crop')}
+.viwepager{ position:relative; width:270px; height:479px; margin:0 auto; overflow:hidden;}
+.viwepager li{ float:left; width:270px; height:479px;}
+.viwepager-box .top-tip li{ display:block; width:155px; height:108px; position:absolute; right:-140px; top:30px;}
+.viwepager-box .top-tip .ph-tip{ background-position:0 0;}
+.viwepager-box .top-tip .ph-tip2{ background-position:-176px 0;}
+
+.more{ text-align:center; color:#4c575c}
+.more a,
+.more a:hover{ color:#4c575c}
+.function { max-width:1160px; min-width:960px;width:86%;_width:1160px; margin:44px auto 0; padding-bottom:15px; border-bottom:1px solid #c7ccd0}
+.function .fun-pic{ width:34%; height:669px;}
+.function .fun-ico{ display:block; width:148px; height:148px; margin:60px 0 0 144px;}
+.function .fun-txt{ margin-top:150px;}
+.fun-txt h2{ font-size:28px; color:#458fdb; margin-bottom:12px;}
+.fun-txt h2 em{ margin-left:25px;}
+.fun-txt p{ font-size:16px; color:#4c575c; line-height:32px;}
+
+
+.order-fun{ margin-top:32px;}
+.order-fun .fun-pic{ background:url(../pic/app/order-fun.png) no-repeat center 0;}
+.order-fun .fun-txt{ width:455px; margin-left:14%;}
+.order-fun .fun-ico{ background-position:0 -309px;}
+
+.check-fun .fun-pic{ background:url(../pic/app/check-fun.png) no-repeat center 0;}
+.check-fun .fun-txt{ width:560px; margin-left:3.4%;}
+.check-fun .fun-ico{ background-position:-156px -309px;}
+
+.room-fun .fun-pic{ background:url(../pic/app/room-fun.png) no-repeat center 0;}
+.room-fun .fun-txt{ width:485px; margin-left:14%;}
+.room-fun .fun-ico{ background-position:-156px -465px;}
+
+.reply-fun .fun-pic{ /*width:460px;*/ background:url(../pic/app/reply-fun.png) no-repeat center 0;}
+.reply-fun .fun-txt{ width:590px; margin-left:40px;}
+.reply-fun .fun-ico{ background-position:0px -465px;}
+
+.change-fun{ border:none}
+.change-fun .fun-pic{ background:url(../pic/app/change-fun.jpg) no-repeat center 0;}
+.change-fun .fun-txt{ width:430px; margin-left:14%;}
+.change-fun .fun-ico{ background-position:0px -627px;}
+
+.app-ft-wrap{ height:356px; background:url(../pic/app-ft-bg.jpg) no-repeat center 0}
+.app-ft{ max-width:1200px; min-width:960px; width:90%;_width:1200px; margin:0 auto}
+
+.app-ft .tit{ float:left; min-width:298px;width:25%; height:98px; margin:118px 0 0 7.5%; text-indent:-9999px; background-position:0 -796px ;}
+
+.app-ft .code-box{ width:176px; height:176px; padding:15px; background-color:#fff; }
+.app-ft .code{ margin:0;}
+.app-ft .qr_code .qr_downl,.app-ft .qr_code .qr_wx{ background:none}
+.app-ft .qr_code p{ color:#fff}
+.app-ft .qr_code{ float: right; margin: 40px 0 0 11.8%; width: 48%;}
+
+.app-ft .qr_code .qr_downl,.app-ft .qr_code .qr_wx{ width:206px; height:240px}
+.app-ft .qr_code .qr_downl{ margin-right:9%;}

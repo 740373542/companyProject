@@ -1,0 +1,83 @@
+.tg_table {
+  width: 100%;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border: 1px solid #f4f4f4;
+  background-color: transparent;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+.tg_table>thead>tr>th,
+.tg_table>tbody>tr>td {
+  border: 1px solid #f4f4f4;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+.tg_table>thead>tr>th {
+  border-top: 0;
+  border-bottom-width: 2px;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  padding-right: 30px;
+}
+
+.tg_table>thead>tr>th .container {
+  display: inline;
+}
+
+
+.tg_table>thead>tr>th .icon {
+  float: right;
+  margin-top: 2px;
+}
+
+
+.tg_table>tbody>tr:nth-of-type(odd){
+  background-color: #f9f9f9;
+}
+.tg_table>tbody>tr.selected {
+ background-color: #d4f2fe; 
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+.pagination>div.btn-group {
+  margin-left: 5px;
+}
+.pagination>div.btn-group>div.form-group {
+  margin-bottom: 0px;
+}
+.pagination>div.btn-group>div.form-group>input {
+  width: 40px;
+  text-align: center;
+  margin-left: 5px;
+  height: 30px;
+}

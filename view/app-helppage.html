@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>app_helppage</title>
+	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="/www/evd/public/css/Normallize.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+		}
+		.helpcursor{
+			cursor: pointer;
+		}
+		a{
+			text-decoration: none;
+		}
+		hr{
+			width: 100%;
+			height: 1px;
+			border: 0;
+			background: #DDDDDD;
+			margin-bottom: 16px;
+		}
+		h1{
+			color: #2c3e50;
+			font-weight: 500;
+			margin:30px 0;
+			font-size: 30px;
+		}
+		h2{
+			font-size: 23px;
+			color: #2c3e50;
+			font-weight: 600;
+			margin:16px 0;
+		}
+		h3{
+			margin: 14px 0;
+			color: #2c3e50;
+			font-weight: 400;
+		}
+		h4{
+			margin:6px 0;
+			cursor: pointer;
+			font-size: 15px;
+			color: #7f8c8d;
+			font-weight: 300;
+		}
+		h4:hover{
+			margin:6px 0;
+			font-size: 15px;
+			color: #7f8c8d;
+			font-weight: 300;
+			box-sizing: border-box;
+			color: #42b983;
+		}
+		h5{
+			cursor: pointer;
+			font-size: 13px;
+			margin-left: 10px;
+			margin-bottom: 5px;
+			color: #34495e;
+			font-weight: 400;
+		}
+		h6{
+			cursor: pointer;
+			margin-left: 20px;
+			margin-bottom: 5px;
+			color: #34495e;
+			font-size: 13px;
+			font-weight: 400;
+		}
+		p{
+			font-size: 15px;
+			color: #34495e;
+			margin-bottom: 15px;
+			word-spacing: 2px;
+			font-weight: 400;
+			font-family: 'Source Sans Pro';
+		}
+		.help-selectedline{
+			border-bottom: 2px solid blue;
+		}
+		.help-header{
+			/*background: green;*/
+			background: white;
+			position: fixed;
+			top: 0;
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 61px;
+			flex-direction: space-between;
+			padding:0 60px; 
+			border-bottom: 1px solid #EEEEEE;
+			z-index: 99999;
+		}
+		.help-body{
+			display: flex;
+			justify-content: flex-start;
+		}
+		.help-leftnav{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			overflow-y: auto;
+			overflow-x: hidden;
+			box-sizing: border-box;
+			position: fixed;
+			top:61px;
+			width: 310px;
+			height: 100%;
+			padding: 60px;
+			border-right: 1px solid #eeeeee;
+		}
+		.help-content{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			overflow-y: auto;
+			overflow-x: hidden;
+			margin-top: 61px;
+			margin-left: 310px;
+			width: 100%;
+			height: 100%;
+			padding-left:28px;
+			box-sizing: border-box;
+		}
+		.help-content-box{
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			max-width: 800px;
+		}
+		.contentimport{
+			margin-bottom: 18px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			background: #F8F8F8;
+			border-radius: 4px;
+			padding: 20px 20px 0 20px;
+			box-sizing: border-box;
+
+		}
+		.contentwarn{
+			position: relative;
+			margin-bottom: 18px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			background: #F8F8F8;
+			padding: 20px 20px 0 20px;
+			border-left: 5px solid #FF6666;
+			box-sizing: border-box;
+		}
+		.contentwarn-mark{
+			border-radius: 100%;
+			width: 20px;
+			height: 20px;
+			background: #FF6666;
+			position: absolute;
+			left: -13px;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<div class="help-header">
+	<div class="help-headerleft">
+		<img src="">
+	</div>
+	<div class="help-headerright"></div>
+</div>
+<div style="height: 61px;"></div>
+
+
+<div class="help-body">
+	<div class="help-leftnav">
+		<h3 class="strong">基础</h3>
+		<a href="#锚点"><h4>安装</h4></a>
+		<h5>独立版本</h5>
+		<h6>CDN</h6>
+		<h5>NNM</h5>
+		<h6>独立构建vs运行时构建</h6>
+		<h6>CSP环境</h6>
+		<h5>命令行工具</h5>
+		<h5>开发版本</h5>
+		<h5>BOWER</h5>
+		<h5>AMD模块加速器</h5>
+		<h4>介绍</h4>
+		<h4>Vue实例</h4>
+		<h4>模版语法</h4>
+		<h4>计算属性</h4>
+		<h4>Class与Style绑定</h4>
+		<h4>条件渲染</h4>
+		<h4>事件处理器</h4>
+		<h4>表单绑定控件</h4>
+		<h4>组件</h4>
+		<h3 class="strong">进阶</h3>
+		<h4>深入响应式原理</h4>
+		<h4>过渡效果</h4>
+		<h4>Rander函数</h4>
+		<h4>自定义指令</h4>
+		<h4>混合</h4>
+		<h4>单文件组建</h4>
+		<h4>生产环境部署</h4>
+		<h4>路由</h4>
+		<h4>状态管理</h4>
+		<h4>单元测试</h4>
+		<h4>服务端渲染</h4>
+		<h3 class="strong">迁移</h3>
+		<h4>从Vue 1.x迁移</h4>
+		<h4>从Vue Router 0.7.x迁移</h4>
+		<h4>从Vue 0.6.x迁移到 1.0</h4>
+		<h3>更多</h3>
+		<h4>对比其他框架</h4>
+		<h4>加入Vue.js社区</h4>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<div class="help-content">
+
+
+
+		<div class="help-content-box">
+			<h1>Rander函数</h1>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2 >锚点</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+						<h1>Rander函数</h1>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2 id="锚点" style="padding-top:80px;margin-top:-80px;background: blue;">锚点</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+
+
+
+
+
+
+						<h1>Rander函数</h1>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2>基础</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+			<h2 >锚点</h2>
+			<hr>
+			<p>Vue 
+			<code style="color: #e96900;background: #f8f8f8; padding:2px;">推荐使用</code>
+			在绝大多数情况下使用 <code style="font-weight: 600;">template</code> 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</p>
+			
+			<div class="contentimport">
+				<p>比较醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+			<div class="contentwarn"><div class="contentwarn-mark">!</div>
+				<p>很醒目</p>
+				<p>实打实的跋涉就好大噶手机号给大声疾呼高大上就哈根达斯家会给大声疾呼啊就很伤感的啊就是打开噶金黄色啊上课感觉哈萨克感觉哈说感觉很啊啥的感觉哈说感觉哈说的感觉哈说的感觉哈说的感觉哈说的感觉哈说到结婚噶圣诞节好噶时代感觉哈卡上噶金黄色看看噶金黄色看噶金黄色看噶金黄色</p>
+			</div>
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+	
+	
+	
+</body>
