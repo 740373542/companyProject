@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript" src="/assets/js/flexible.js"></script>
 	<script type="text/javascript" src="/assets/js/flexible_css.js"></script>
-	<script type="text/javascript" src="/assets/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/assets/js/react.js"></script>
 	<script type="text/javascript" src="/assets/js/react-dom.js"></script>
 	<script type="text/javascript" src="/assets/js/borwer.min.js"></script>
