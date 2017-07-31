@@ -5,36 +5,20 @@
 
 
 
-<div id="test"></div>
+<div id="test">{{ls}}</div>
 
 
 
-<script type="text/babel">
+<script >
 
-var FirstComp = React.createClass({
-
-	getInitialState(){
+new Vue({
+	el:'#test',
+	data:function(){
 		return{
-			ls:'cc',
+			ls:'xxx',
 		}
-	},
-
-	componentDidMount(){
-	},
-
-	render(){
-		return(
-			<h1>{this.state.ls}</h1>
-		)
 	}
 })
-
-
-
-ReactDOM.render(
-	<FirstComp />,
-	document.getElementById("test")
-)
 
 
 

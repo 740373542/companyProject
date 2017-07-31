@@ -11,9 +11,12 @@
 	<script type="text/javascript" src="/assets/js/flexible.js"></script>
 	<script type="text/javascript" src="/assets/js/flexible_css.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="/assets/js/react.js"></script>
-	<script type="text/javascript" src="/assets/js/react-dom.js"></script>
-	<script type="text/javascript" src="/assets/js/borwer.min.js"></script>
+	<!-- <script type="text/javascript" src="/assets/js/react.js"></script> -->
+	<!-- <script type="text/javascript" src="/assets/js/react-dom.js"></script> -->
+	<!-- <script type="text/javascript" src="/assets/js/borwer.min.js"></script> -->
+
+	<script type="text/javascript" src="/assets/js/vue.min.js"></script>
+
 	<script type="text/javascript" src="/assets/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- <script type="text/babel" src="/assets/js/methods.js"></script> -->
 
