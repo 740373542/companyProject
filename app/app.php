@@ -2,7 +2,9 @@
 
 namespace app;
 
-require_once __APP__ . '/methods.php';
+require_once __APP__ . '/lib/methods.php';
+require_once __APP__ . '/lib/meedo.php';
+require_once __APP__ . '/config/config.php';
 
 class engine {
 
@@ -64,11 +66,16 @@ class controller {
 
     public $code;
 
-    public $data;
+    public $data = [];
 
-    function error(){
+
+    public function send($arr){
+
+        echo json_encode($arr,JSON_UNESCAPED_UNICODE);
 
     }
+
+
 
 }
 
@@ -77,6 +84,59 @@ class controller {
 class model {
 
     public $data=[];
+
+    public static $table="";
+
+    public static $db = null;
+
+
+    static function connect(){
+
+        if(!self::$db){
+            self::$db = new \medoo(\DB::$config);
+        }
+
+        self::$db->pdo->beginTransaction();
+        return self::$db;
+
+    }
+
+    static function finds($where,$column="*",&$count=null,$parmas=['page'=>0,'length'=>1]){
+
+        $db = self::connect();
+
+        $table = static::$table;
+
+        $sql = "SELECT ".$column." FROM ".$table." ".$where;
+
+        $arr = $db->query($sql);
+
+        if($count){
+            $count = self::privateCount($table,$column,$where);
+        }
+
+        return $arr->fetchAll();
+
+    }
+
+
+    static function privateCount($table,$column,$where){
+
+        if(self::$db){
+            $db = self::$db;
+        }else{
+            $db = self::connect();
+        }
+
+        $sql = "SELECT count(".$column.") FROM ".$table." ".$where;
+
+        $arr = $db->query($sql);
+
+
+
+    }
+
+
 
 }
 

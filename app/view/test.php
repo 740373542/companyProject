@@ -7,11 +7,41 @@
 
 <div id="test"></div>
 
+
+
 <script type="text/babel">
-	
- ReactDOM.render(
- 	<h1>hello word</h1>,
- 	document.getElementById("test")
- )
+
+var FirstComp = React.createClass({
+
+	getInitialState(){
+		return{
+			ls:'cc',
+		}
+	},
+
+	componentDidMount(){
+	},
+
+	render(){
+		return(
+			<h1>{this.state.ls}</h1>
+		)
+	}
+})
+
+
+
+ReactDOM.render(
+	<FirstComp />,
+	document.getElementById("test")
+)
+
+
+
+
+
+
+
+
 
 </script>

@@ -18,5 +18,23 @@ define("__UPLOAD__",__PROJECT__.'/upload');
 
 require_once __APP__.'/app.php';
 
-\app\engine::run();
+
+
+try{
+
+	\app\engine::run();
+  	if(\app\model::$db) \app\model::$db->pdo->commit();
+
+} 
+
+catch(Exception $e){
+  	if(\app\model::$db)  \app\model::$db->pdo->rollBack();
+
+  	$error = [
+  		"code"=>$e->getCode(),
+  		"msg"=>$e->getMessage(),
+  	];
+	echo json_encode($error,JSON_UNESCAPED_UNICODE);
+}
+
 
