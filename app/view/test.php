@@ -8,7 +8,20 @@
 
 <div id="test">
 	<div style="font-size:20px">{{ls}}</div>
-	<comp_test :name="ls"></comp_test>
+
+
+
+	<comp_test :name="ls">
+		<template scope="props">
+			<div style="font-size:20px;color:red" @click="props.test">	{{ls}}
+			</div>
+		</template>
+	</comp_test>
+
+
+
+
+	
 </div>
 
 
@@ -30,7 +43,6 @@ $$.vue({
 	methods:{
 
 		test:function(){
-			$$.event.send("AAA","shabi")
 		},
 
 

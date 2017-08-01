@@ -1,5 +1,11 @@
 <template id="comp_test">
-	<div>{{aaa}}</div>
+	
+	<div>
+		my is component
+		<slot :test="child"></slot>
+	</div>
+
+
 </template>
 
 <script type="text/javascript">
@@ -13,12 +19,11 @@
 		},
 
 		init:function(){
-			alert(this.name)
 		},	
 
 		methods:{
-			call_AAA:function(val){
-				alert(val)
+			child:function(){
+				alert("child")
 			}
 		}
 	})

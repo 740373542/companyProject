@@ -113,7 +113,7 @@ class model {
 
         $arr = $db->query($sql);
 
-        if($count){
+        if($count != null){
             $count = self::privateCount($table,$column,$where);
         }
 
