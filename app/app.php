@@ -86,6 +86,7 @@ class controller {
 class model {
 
     public $data=[];
+    public $id="";
 
     public static $table="";
 
@@ -103,26 +104,45 @@ class model {
 
     }
 
-    static function finds($where,$column="*",&$count=null,$parmas=['page'=>0,'length'=>1]){
+    static function finds($where,$column="*",&$count=null,$params=['page'=>1,'length'=>0]){
+
 
         $db = self::connect();
 
+        $sqlLimit = '';
+
+        if($params['length'] > 0){
+
+            $length = $params['length'];
+            $page = $params['length']*($params['page']-1);
+            $sqlLimit = " LIMIT {$page},{$length}";
+
+        }
+
         $table = static::$table;
 
-        $sql = "SELECT ".$column." FROM ".$table." ".$where;
+        $sql = "SELECT ".$column." FROM ".$table." ".$where.$sqlLimit;
 
         $arr = $db->query($sql);
 
-        if($count != null){
-            $count = self::privateCount($table,$column,$where);
+       
+
+        if($arr){
+            $datas = $arr->fetchAll();
+        }else{
+            $datas = [];
         }
 
-        return $arr->fetchAll();
+        if($count !== null){
+            $count = static::sqlCount($column,$where);
+        }
+
+        return count($datas) <= 0 ? [] : $datas;
 
     }
 
 
-    static function privateCount($table,$column,$where){
+    static function sqlCount($column,$where){
 
         if(self::$db){
             $db = self::$db;
@@ -130,14 +150,96 @@ class model {
             $db = self::connect();
         }
 
+        $table = static::$table;
+
         $sql = "SELECT count(".$column.") FROM ".$table." ".$where;
 
-        $arr = $db->query($sql);
+        $arr = $db->query($sql)->fetch();
+
+        $res = array_values($arr);
+
+        return $res[0];
+
 
 
 
     }
 
+    static function findOnce($where,$column="*"){
+
+        $datas = static::finds($where,$column);
+
+        return count($datas) <=0 ? [] : $datas[0];
+
+    }
+
+    static function loadObj($val,$key="id"){
+
+        if(self::$db){
+            $db = self::$db;
+        }else{
+            $db = self::connect();
+        }
+
+        $table = static::$table;
+
+        $column = "*";
+
+        $where = [$key => $val];
+
+        $res = $db->get($table,$column,$where);
+
+        $obj = new static;
+
+
+        if($res["id"]){
+            $obj->id = $res["id"];
+        }
+
+        $obj->data = $res;
+
+        return $obj;        
+
+
+    }
+
+    static function deleteId($id){
+
+        if(self::$db){
+            $db = self::$db;
+        }else{
+            $db = self::connect();
+        }
+
+        $table = static::$table;
+
+        $db->delete($table,["id"=>$id]);
+
+        \vd("deleted succ");
+
+    }
+
+
+    public function save(){
+
+        if(self::$db){
+            $db = self::$db;
+        }else{
+            $db = self::connect();
+        }
+
+        $table = static::$table;
+
+        if(!$this->data["id"]){
+            $db->insert($table,$this->data);
+            \vd("exec:instert");
+        }else{
+            $db->update($table,$this->data,["id"=>$this->data['id']]);
+            \vd("exec:update");
+        }
+
+
+    }
 
 
 }

@@ -10,10 +10,13 @@ class test extends \app\controller{
 
 	function add(){
 
-		// $this->send(['ls'=>"data"]);
-		// \error(-1,"sss");
 
-		// $this->send(['ls'=>$_POST]);
+
+		\model\user::deleteId(2);
+
+
+
+
 	}
 
 }

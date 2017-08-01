@@ -40,13 +40,26 @@ function error($code,$msg="脚本异常"){
 }
 
 
+function setIndex($arr,$key="id"){
+    $res = [];
+    if(!empty($arr)){
+        foreach($arr as $k => $v){
+            $res[$v[$key]] = $v;
+        }
+    }else{
+        echo "数组为空!";
+    }
+    return $res;
+}
 
 
-$_idx = 0;
+
+
 
 function vd($v, $str = '', $printobject = false)
 {
-    global $_idx;
+    $_idx = 0;
+    
     // if (__MODE__ !== 'dev') {
     //     return;
     // }
