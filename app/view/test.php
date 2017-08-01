@@ -9,22 +9,29 @@
 
 
 
-<script >
+<script>
 
-new Vue({
-	el:'#test',
-	data:function(){
-		return{
-			ls:'xxx',
-		}
+
+$$.vue({
+	el:"#test",
+
+	EVENT:['AAA',"BBB"],
+
+	data:{
+		ls:"lh",
+	},
+
+	init:function(){
+
+	},
+
+	methods:{
+
+	
+
+
 	}
 })
-
-
-
-
-
-
 
 
 

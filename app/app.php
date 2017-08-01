@@ -71,6 +71,8 @@ class controller {
 
     public function send($arr){
 
+        $arr['code'] = 0;
+
         echo json_encode($arr,JSON_UNESCAPED_UNICODE);
 
     }

@@ -8,4 +8,12 @@ class test extends \app\controller{
 		require \view("test");
 	}
 
+	function add(){
+
+		// $this->send(['ls'=>"data"]);
+		// \error(-1,"sss");
+
+		// $this->send(['ls'=>$_POST]);
+	}
+
 }
