@@ -1,11 +1,15 @@
 <?php 
  require \view("header");
+ require \component("comp_test");
 ?>
 
 
 
 
-<div id="test">{{ls}}</div>
+<div id="test">
+	<div style="font-size:20px">{{ls}}</div>
+	<comp_test :name="ls"></comp_test>
+</div>
 
 
 
@@ -14,8 +18,6 @@
 
 $$.vue({
 	el:"#test",
-
-	EVENT:['AAA',"BBB"],
 
 	data:{
 		ls:"lh",
@@ -27,7 +29,9 @@ $$.vue({
 
 	methods:{
 
-	
+		test:function(){
+			$$.event.send("AAA","shabi")
+		},
 
 
 	}

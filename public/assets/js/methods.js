@@ -117,42 +117,42 @@ $$.event = function(){
 
 }()
 
-$$.vue = function(parmas){
+$$.vue = function(params){
 
-	parmas.init = parmas.init || function(){}
-	parmas.create =  parmas.create || function(){}
-	parmas.data = parmas.data || {} 
-	parmas.methods = parmas.methods || {}
-	parmas.watch = parmas.watch || {} 
-	parmas.EVENT = parmas.EVENT || [] 
+	params.init = params.init || function(){}
+	params.create =  params.create || function(){}
+	params.data = params.data || {} 
+	params.methods = params.methods || {}
+	params.watch = params.watch || {} 
+	params.EVENT = params.EVENT || [] 
 
 	var obj = {
 
-		el:parmas.el,
+		el:params.el,
 
 		data:function(){
-			return parmas.data
+			return params.data
 		},
 
 		created:function(){
-			parmas.create.apply(this)
-			if(parmas.EVENT != ''){
-				for(var k in parmas.EVENT){
-					$$.event.set(parmas.EVENT[k],this)
+			params.create.apply(this)
+			if(params.EVENT != ''){
+				for(var k in params.EVENT){
+					$$.event.set(params.EVENT[k],this)
 				}
 			}
 		},
 
 		mounted:function(){
-			parmas.init.apply(this)
+			params.init.apply(this)
 		},
 
 		destroyed:function(){
 			$$.event.del()
 		},
 
-		methods:parmas.methods,
-		watch:parmas.watch,
+		methods:params.methods,
+		watch:params.watch,
 
 	}
 
@@ -160,8 +160,93 @@ $$.vue = function(parmas){
 
 }
 
-$$.comp = function(parmas){
+$$.comp = function(params){
 
+	var name = params.name || "index"
+
+	if(!params.el || params.el==''){
+		console.log("请定义模版")
+		return;
+	}
+
+	params.init = params.init || function(){}
+	params.create =  params.create || function(){}
+	params.data = params.data || {} 
+	params.methods = params.methods || {}
+	params.watch = params.watch || {} 
+	params.EVENT = params.EVENT || []
+	params.props = params.props || []
+
+	var obj = {
+
+		template:$(params.el).html(),
+
+		props:params.props,
+
+		data:function(){
+			return params.data
+		},
+
+		created:function(){
+			params.create.apply(this)
+			if(params.EVENT != ''){
+				for(var k in params.EVENT){
+					$$.event.set(params.EVENT[k],this)
+				}
+			}
+		},
+
+		mounted:function(){
+			params.init.apply(this)
+		},
+
+		destroyed:function(){
+			$$.event.del()
+		},
+
+		methods:params.methods,
+		watch:params.watch,
+
+	}
+
+	Vue.component(name,obj)
+
+
+
+}
+
+
+$$.getTime = function(){
+  return (new Date()).getTime()
+}
+
+$$.parseDate = function(date,strtime){
+  Date.prototype.format =function(format){
+      var o = {
+        "M+" : this.getMonth()+1, //month
+        "d+" : this.getDate(), //day
+        "h+" : this.getHours(), //hour
+        "m+" : this.getMinutes(), //minute
+        "s+" : this.getSeconds(), //second
+        "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+        "S" : this.getMilliseconds() //millisecond
+      }
+      if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+      (this.getFullYear()+"").substr(4- RegExp.$1.length));
+      for(var k in o)if(new RegExp("("+ k +")").test(format))
+      format = format.replace(RegExp.$1,
+      RegExp.$1.length==1? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+      return format;
+    }
+    return date.format(strtime)
+}
+
+
+$$.isEmptyObj = function(obj){
+    for(var i in obj){
+      return true
+    }
+    return false
 }
 
 

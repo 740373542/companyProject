@@ -12,7 +12,7 @@ function view($fileName){
 }
 
 
-function component(){
+function component($fileName){
 	$viewDir = __APP__ . '/components/' . $fileName . '.php';
 
 	if(file_exists($viewDir)){
