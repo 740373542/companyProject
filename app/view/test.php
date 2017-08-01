@@ -7,15 +7,22 @@
 
 
 <div id="test">
-	<div style="font-size:20px">{{ls}}</div>
+	<!-- <div style="font-size:20px">{{}}</div> -->
+	<div class="tm-sidebar">
+                <img src="img/menu-top.jpg" alt="Menu top image" class="img-fluid tm-sidebar-image">
+                <nav class="tm-main-nav">
+                    <ul>
+                        <li class="tm-nav-item"><a href="#home" class="tm-nav-item-link">Home</a></li>
+                        <li class="tm-nav-item"><a href="#about" class="tm-nav-item-link">About</a></li>
+                        <li class="tm-nav-item"><a href="#ideas" class="tm-nav-item-link">Ideas</a></li>
+                        <li class="tm-nav-item"><a href="#contact" class="tm-nav-item-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
 
 
 
-	<comp_test :name="ls">
-		<template scope="props">
-			<div style="font-size:20px;color:red" @click="props.test">	{{ls}}
-			</div>
-		</template>
+	<comp_test v-bind:name="ls">
 	</comp_test>
 
 
@@ -37,7 +44,7 @@ $$.vue({
 	},
 
 	init:function(){
-
+		$$.event.send("AAA")
 	},
 
 	methods:{
