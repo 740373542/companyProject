@@ -8,6 +8,9 @@
 </div>
 
 <script type="text/javascript">
+
+	var users = <?=$_users?>
+
 	$$.vue({
 		el:"#home",
 
