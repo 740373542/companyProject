@@ -1,5 +1,7 @@
 var $$ = {}
 
+$$.component = {}
+
 $$.str = function(json){
 
 	return JSON.stringify(json)
@@ -64,48 +66,58 @@ $$.event = function(){
 	var eventBox = {};
 
 	var setEvent = function(eventName,obj){
-		eventBox[eventName] = []
+
+		if(typeof eventBox[eventName] == "undefined"){
+			eventBox[eventName] = []
+		}
 		eventBox[eventName].push(obj)
 
+		
 	}
 
 	var sendEvent = function(eventName,parmas,toobj){
 
-		var box = eventBox
 
-		for(var k in box){
-			var event = k
-			var objs = box[k]
+			if(typeof eventBox[eventName] !== "undefined" && eventBox[eventName].length > 0){
 
-			if((toobj && typeof toobj == "object") && eventName == event){
-					toobj['call_'+event](parmas)
+				var objs = eventBox[eventName];
+
+				if(toobj){
+					for(var k in objs){
+						if(toobj == objs[k]){
+							toobj["call_"+eventName](parmas)
+						}else{
+							console.log("没有找到指定对象")
+						}
+					}
 					return
-			}
-			if(typeof eventName == "string" && event == eventName){
-				for(var i in objs){
-					var obj = objs[i]
-					obj["call_"+event](parmas)
 				}
+
+				for(var i in objs){
+
+					var obj = objs[i]
+
+					obj["call_"+eventName](parmas)
+
+					console.log(eventName+"事件调用成功")
+
+				}
+
 			}else{
-				console.log("error:event异常")
+				console.log(eventName+"失败")
 			}
 
-		}
 
 	}
 
-	var destroyEvent = function(){
-
-		for(var event in eventBox){
-
-			var objs = eventBox[event]
-
-			for(var i=0;i<objs.length;i++){
-				objs.splice(i,1)
+	var destroyEvent = function(eventName,obj){
+		if(eventBox[eventName] !== "undefined" && eventBox[eventName].length>0){
+			for (var i=0; i<eventBox[eventName].length; i++){
+				if(eventBox[eventName][i] == obj){
+					eventBox[eventName].splice(i,1)
+				}
 			}
 		}
-
-		eventBox = {}
 	}
 
 
@@ -124,7 +136,10 @@ $$.vue = function(params){
 	params.data = params.data || {} 
 	params.methods = params.methods || {}
 	params.watch = params.watch || {} 
+	params.childs = params.childs || {} 
 	params.EVENT = params.EVENT || [] 
+
+
 
 	var obj = {
 
@@ -133,6 +148,7 @@ $$.vue = function(params){
 		data:function(){
 			return params.data
 		},
+
 
 		created:function(){
 			params.create.apply(this)
@@ -148,9 +164,14 @@ $$.vue = function(params){
 		},
 
 		destroyed:function(){
-			$$.event.del()
+			for(var k in params.EVENT){
+				var eventName = params.EVENT[k]
+				$$.event.del(eventName,this)
+
+			}
 		},
 
+		components:params.childs,
 		methods:params.methods,
 		watch:params.watch,
 
@@ -159,6 +180,67 @@ $$.vue = function(params){
 	return new Vue(obj)
 
 }
+
+
+$$.child = function(params){
+
+	if(!params.el || params.el==''){
+		console.log("请定义模版")
+		return;
+	}
+
+	params.init = params.init || function(){}
+	params.create =  params.create || function(){}
+	params.data = params.data || {} 
+	params.methods = params.methods || {}
+	params.watch = params.watch || {} 
+	params.EVENT = params.EVENT || []
+	params.props = params.props || []
+
+	var obj = {
+
+		template:$(params.el).html(),
+
+		props:params.props,
+
+		data:function(){
+			return params.data
+		},
+
+		created:function(){
+			params.create.apply(this)
+
+
+			if(params.EVENT != ''){
+				for(var k in params.EVENT){
+					$$.event.set(params.EVENT[k],this)
+				}
+			}
+		},
+
+		mounted:function(){
+			params.init.apply(this)
+		},
+
+		destroyed:function(){
+			for(var k in params.EVENT){
+				var eventName = params.EVENT[k]
+				$$.event.del(eventName,this)
+
+			}
+		},
+
+		methods:params.methods,
+		watch:params.watch,
+
+	}
+
+	return obj;
+}
+
+
+
+
 
 $$.comp = function(params){
 
@@ -201,7 +283,10 @@ $$.comp = function(params){
 		},
 
 		destroyed:function(){
-			$$.event.del()
+			for(var k in params.EVENT){
+				var eventName = params.EVENT[k]
+				$$.event.del(eventName,this)
+			}
 		},
 
 		methods:params.methods,
