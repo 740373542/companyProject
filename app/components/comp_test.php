@@ -1,9 +1,9 @@
 <template id="comp_test">
 	
-	<div>
+	<!-- <div>
 		my is component
 		<slot :test="child"></slot>
-	</div>
+	</div> -->
 
 
 </template>
