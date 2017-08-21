@@ -7,6 +7,10 @@
  *
  * Copyright (c) 2017 Daniel Eden
  */
+/*
+[v-cloak] {
+  display: none;
+}*/
 
 .animated {
   animation-duration: 1s;

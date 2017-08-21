@@ -53,6 +53,49 @@ function setIndex($arr,$key="id"){
 }
 
 
+function randArrayHasKey($array){
+
+        $res = [];
+        $key = null;
+        $count = count($array);
+
+        for($i=0;$i<$count;$i++){
+
+            $key = array_rand($array,1);
+
+            $res[$key] = $array[$key];
+
+            unset($array[$key]);
+
+        }
+
+        return $res;
+
+}
+
+
+function randArrayNotKey(&$array){
+
+    shuffle($array);
+
+}
+
+function whereIn($index,$array){
+
+    $str = "";
+
+    if(count($array) > 0){
+
+        $str = "where {$index} in (".implode(',', $array).") ";
+
+    }
+
+    return $str;
+
+
+}
+
+
 
 
 

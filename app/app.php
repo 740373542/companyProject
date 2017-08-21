@@ -3,7 +3,8 @@
 namespace app;
 
 require_once __APP__ . '/lib/methods.php';
-require_once __APP__ . '/lib/meedo.php';
+require_once __APP__ . '/lib/medoo.php';
+require_once __APP__ . '/lib/interface.php';
 require_once __APP__ . '/config/config.php';
 
 class engine {
@@ -53,10 +54,7 @@ class engine {
 
     }
 
-
-
 }
-
 
 
 
@@ -68,6 +66,27 @@ class controller {
 
     public $data = [];
 
+    public $service = null;
+
+    public $event = null;
+
+    public function __construct(){
+
+
+        if(!$this->service){
+
+            $this->service = \module\service::init();
+
+        }
+
+        if(!$this->event){
+
+            $this->event = \module\event::init();
+
+        }
+
+
+    }
 
     public function send($arr){
 
@@ -76,8 +95,6 @@ class controller {
         echo json_encode($arr,JSON_UNESCAPED_UNICODE);
 
     }
-
-
 
 }
 
@@ -97,9 +114,9 @@ class model {
 
         if(!self::$db){
             self::$db = new \medoo(\DB::$config);
+            self::$db->pdo->beginTransaction();
         }
 
-        self::$db->pdo->beginTransaction();
         return self::$db;
 
     }
@@ -124,8 +141,6 @@ class model {
         $sql = "SELECT ".$column." FROM ".$table." ".$where.$sqlLimit;
 
         $arr = $db->query($sql);
-
-       
 
         if($arr){
             $datas = $arr->fetchAll();
@@ -192,12 +207,15 @@ class model {
         $obj = new static;
 
 
+
         if($res["id"]){
             $obj->id = $res["id"];
         }
 
         $obj->data = $res;
 
+        // \vd($obj,"obj");
+        
         return $obj;        
 
 
@@ -230,7 +248,7 @@ class model {
 
         $table = static::$table;
 
-        if(!$this->data["id"]){
+        if(!$this->data['id'] || !isset($this->data['id'])){
             $db->insert($table,$this->data);
             \vd("exec:instert");
         }else{
@@ -241,10 +259,124 @@ class model {
 
     }
 
+    static function querys($datas,$column="*",&$count=null){
+
+        $db = self::connect();
+
+        $table = static::$table;
+
+        $params = "";
+
+        $extend = "";
+
+        $sqlLimit = '';
+
+        $page = 0;
+        $length = 0;
+
+        if(!empty($datas['where'])){
+
+            if(!empty($datas['page'])) $page = $datas['page'];
+            if(!empty($datas['length'])) $length = $datas['length'];
+
+            return static::finds($datas['where'],$column,$count,['page'=>$page,'length'=>$length]);
+
+
+        }else{
+
+
+            if(!empty($datas['length']) && !empty($datas['page'])){
+                $length = $datas['length'];
+                $page = $datas['length']*($datas['page']-1);
+                $sqlLimit = " LIMIT {$page},{$length}";
+                unset($datas['length']);
+                unset($datas['page']);
+            }
+
+
+            if(!empty($datas['extend'])){
+
+                $extend = $datas['extend'];
+
+                unset($datas['extend']);
+
+            }
+
+
+            if(count($datas) == 1){
+
+                $key = array_keys($datas);
+                $val = array_values($datas);
+                $params = $key[0].$db->quote($val[0]);
+
+            }else{
+
+                foreach ($datas as $k => $v) {
+                    $params.= $k.$db->quote($v)." and ";
+                }
+
+                $params = rtrim($params,' and');
+            }
+
+            $sql = "SELECT ".$column." FROM ".$table." where ".$params." ".$extend." ".$sqlLimit;
+
+            $arr = $db->query($sql);
+
+            if($arr){
+                $res = $arr->fetchAll();
+            }else{
+                $res = [];
+            }
+
+            if($count !== null){
+                $count = static::queryCount($column,$datas,$extend);
+            }
+
+            return count($res) <= 0 ? [] : $res;
+
+        }
+
+       
+    }
+
+
+    static function queryCount($column,$datas,$extend){
+
+        $db = self::connect();
+
+        $table = static::$table;
+
+        $params = "";
+
+        if(count($datas) == 1){
+
+            $key = array_keys($datas);
+            $val = array_values($datas);
+            $params = $key[0].$db->quote($val[0]);
+
+        }else{
+
+            foreach ($datas as $k => $v) {
+                $params.= $k.$db->quote($v)." and ";
+            }
+
+            $params = rtrim($params,' and');
+        }
+
+
+        $sql = "SELECT count(".$column.") FROM ".$table." where ".$params." ".$extend;
+
+        $arr = $db->query($sql)->fetch();
+
+        $res = array_values($arr);
+
+        return $res[0];
+
+    }
+
+
 
 }
-
-
 
 
 
@@ -254,6 +386,7 @@ class Loader{
 
     public static function controllerloader($className){
         $path = explode('\\',$className);
+        // \vd($path,"path_info");
         $dirName = $path[0];
         $fileName = $path[1];
         $requireFile = __APP__.'/'.$dirName.'/'.$fileName.'.php';

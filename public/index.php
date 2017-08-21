@@ -2,6 +2,10 @@
 
 header("Content-Type:text/html;charset=utf-8");
 
+error_reporting(E_ALL^E_NOTICE);
+
+date_default_timezone_set("PRC");
+
 define("__PUBLIC__",substr(__FILE__,0,strrpos(__FILE__,'/')));
 
 define("__PROJECT__",substr(__PUBLIC__,0,strrpos(__PUBLIC__,'/')));
@@ -29,7 +33,6 @@ try{
 
 catch(Exception $e){
   	if(\app\model::$db)  \app\model::$db->pdo->rollBack();
-
   	$error = [
   		"code"=>$e->getCode(),
   		"msg"=>$e->getMessage(),

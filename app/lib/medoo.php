@@ -10,8 +10,8 @@
  */
 
 define("__SQL_DEBUG__", false);
-// define("__SQL_DEBUG__", true);
-define("__LOG_FILE__", "/var/log/php.njzs.log");
+
+define("__LOG_FILE__", "/var/log/php.cformat.log");
 
 
 class medoo
@@ -182,6 +182,11 @@ class medoo
     public function quote($string)
     {
         return $this->pdo->quote($string);
+    }
+    
+
+    public function prepare($string){
+        return $this->pdo->prepare($string);
     }
 
     protected function column_quote($string)

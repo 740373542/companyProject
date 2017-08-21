@@ -1,164 +1,122 @@
 <template id="vue_page_index">
 
-            <div class="tm-main-content">
-                <section id="home" class="tm-content-box tm-banner" style="height:200px;">
-                    <div class="tm-banner-inner">
-                        <h1 class="tm-banner-title" style="">三包干脆面</h1>
-                            
-                    </div>                    
-                </section>
+		<div class="container-fluid" style="background:#E2E2E0;">
 
-                <section>
-       
-                    <div id="about" class="tm-content-box">
-                        
-                        <ul class="boxes gallery-container">
-                            <li class="box box-bg" v-for="v in ls">
-                                <div class="tm-section-title tm-section-title-box tm-box-bg-title">
-                                	<div style="width:2.66rem;height:2.66rem;border-radius:100%;box-shadow:0 0 5px #CDCDCD;display:flex;justify-content:center;align-items:center">
+			<div class ="row" style="height:90px;box-shadow:0px 0px 10px #202020;position:fixed;top:0;left:0;width:100%;margin:0;z-index:999">
+				<div class="col-md-4 col-xs-3" style="background:#202020;height:90px;display:flex;align-items:center;">
+					<div style="width:0.6rem;height:0.6rem;background-image:url('/assets/images/svg/list.svg');background-size:cover;background-position:center center">
+					</div>
+				</div>
 
-                                			<img :src="v.bg_img" style="width:100%;height:100%;border-radius:100%">
-                               
-                                	</div>
-                                </div>
-                                <img src="img/white-bg.jpg" alt="Image" class="img-fluid">
-                            </li>
-                           <!--  <li class="box">
-                                <a href="img/idea-large-01.jpg"><img src="img/idea-01.jpg" alt="Image" class="img-fluid"></a>
-                            </li>
-                            <li class="box box-bg">
-                                <h2 class="tm-section-title tm-section-title-box tm-box-bg-title">Develop</h2>
-                                <img src="img/white-bg.jpg" alt="Image" class="img-fluid">
-                            </li>
-                            <li class="box">
-                                <a href="img/idea-large-02.jpg"><img src="img/idea-02.jpg" alt="Image" class="img-fluid"></a>
-                            </li>
-                            <li class="box box-bg">
-                                <h2 class="tm-section-title tm-section-title-box tm-box-bg-title">Design</h2>
-                                <img src="img/white-bg.jpg" alt="Image" class="img-fluid">
-                            </li>
-                            <li class="box">
-                                <a href="img/idea-large-03.jpg"><img src="img/idea-03.jpg" alt="Image" class="img-fluid"></a>
-                            </li>
-                            <li class="box box-bg">
-                                <h2 class="tm-section-title tm-section-title-box tm-box-bg-title">Support</h2>
-                                <img src="img/white-bg.jpg" alt="Image" class="img-fluid">
-                            </li>
-                            <li class="box">
-                                <a href="img/idea-large-04.jpg"><img src="img/idea-04.jpg" alt="Image" class="img-fluid"></a>
-                            </li>
-                            <li class="box box-bg">
-                                <h2 class="tm-section-title tm-section-title-box tm-box-bg-title">Think</h2>
-                                <img src="img/white-bg.jpg" alt="Image" class="img-fluid">
-                            </li> -->
-                        </ul>
+				<div class="col-md-4 col-xs-6" style="background:#202020;height:90px;display:flex;justify-content:center;align-items:center;color:#FFF;font-size:20px;font-weight:bold">
+					Last Hope
+				</div>
 
-                    </div>
-                    
-                </section>
+				<div class="col-md-4 col-xs-3" style="background:#202020;height:90px;display:flex;justify-content:flex-end;align-items:center;">
+					<div style="width:1.1rem;height:1.1rem;background:#FFF;border-radius:100%;display:flex;justify-content:center;align-items:center">
+					 	<div style="width:1.05rem;height:1.05rem;border-radius:100%;background-image:url('/assets/images/icons/header.jpeg');background-size:cover;background-position:center center"></div>
+					</div>
+				</div>
+			</div>
 
-                <!-- slider -->
-                <section id="ideas">
-                    <div id="tmCarousel" class="carousel slide tm-content-box" data-ride="carousel">
 
-                        <ol class="carousel-indicators">
-                            <li data-target="#tmCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#tmCarousel" data-slide-to="1" class=""></li>
-                            <li data-target="#tmCarousel" data-slide-to="2" class=""></li>
-                        </ol>
+			<div class="row" style="height:150px"></div>
 
-                        <div class="carousel-inner" role="listbox">
-                        
-                            <div class="carousel-item active">
-                                <div class="carousel-content">
-                                    <div class="flex-item">
-                                        <h2 class="tm-section-title">Our Ideas</h2>
-                                        <p class="tm-section-description carousel-description">Suspendisse fermentum auctor turpis quis volutpat. Ut sed nibh non purus porta lacinia. Donec et euismod elit. Aenean vitae quam leo. Pellentesque interdum metus sed massa rutrum.</p>
-                                    </div>
-                                </div>                               
-                            </div>
 
-                            <div class="carousel-item">
-                                <div class="carousel-content">
-                                    <div class="flex-item">
-                                        <h2 class="tm-section-title">Our Clients</h2>
-                                        <p class="tm-section-description carousel-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel nisi pharetra nibh varius pharetra ac sagittis nisi. Etiam pharetra vestibulum hendrerit. Pellentesque interdum metus sed massa rutrum.</p>
-                                    </div>
-                                </div>                                
-                            </div>
+			<div class ="row" >
+				<div class="col-xs-10 col-xs-offset-1 col-sm-10  col-sm-offset-1 col-md-8 col-md-offset-2">
 
-                            <div class="carousel-item">
-                                <div class="carousel-content">
-                                    <div class="flex-item">
-                                        <h2 class="tm-section-title">Our Projects</h2>
-                                        <p class="tm-section-description carousel-description">Donec ex libero, fringilla vitae purus sit amet, rhoncus pharetra lorem. Pellentesque id sem id lacus ultricies vehicula. Aliquam rutrum mi non. Pellentesque interdum metus sed massa rutrum.</p>
-                                    </div>
-                                </div>                                
-                            </div>
+					<div class ="row">
+						<div class="col-md-12 col-xs-12 col-sm-12 padding-null" style="height:300px;background:#FFF">
+							
+							<div style="width:100%;height:13%;display:flex">
+								<div style="width:85%;height:100%;"></div>
 
-                        </div>
-                        
-                    </div>                    
-                </section>
-                
-                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+								<div style="width:15%;height:100%;display:flex;justify-content:flex-end;align-items:center;">
+									<div style="width:0.666667rem;height:0.666667rem;margin-right:0.133333rem;background-image:url('/assets/images/svg/love.svg');background-size:cover;background-position:center center"></div>
+								</div>
+							</div>
 
-                <section class="tm-content-box">
-                    <img src="img/contact.jpg" alt="Contact image" class="img-fluid">
+							<div style="width:100%;height:15%;-background:red;display:flex;justify-content:center;align-items:center;font-size:22px;color:#030303">
+								My Mood
+							</div>
 
-                    <div id="contact" class="pad">
-                        <h2 class="tm-section-title">Contact Us</h2>
-                        <form action="#contact" method="get" class="contact-form">
 
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group-2-col-left">
-                                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group-2-col-right">
-                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="contact_subject" name="contact_subject" class="form-control" placeholder="Subject"  required/>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+							<div style="width:100%;height:6%;"></div>
 
-                        </form>      
-                    </div>
-                    
-                </section>  
+							<div style="width:100%;height:40%;display:flex;justify-content:center;align-items:center;">
+								<div style="width:80%;height:100%;font-size:16px;color:#696969">
+									<p>&nbsp&nbsp&nbsp&nbsp不知道要如何努力才能到达自己渴望的目标，但每天都在努力的往上爬，可能就是为了一个梦想，踏过了很多不可思议的困难，也愿留下自己一些点滴来记录浅薄的理念。</p>
+								</div>
+							</div>
 
-                <footer class="tm-footer">
-   					
-                </footer>
+							<div style="width:100%;height:15%;"></div>
 
-            </div>
+							<div style="width:100%;height:2%;background:#000000;"></div>
+						</div>
+					</div>
+
+					<div class ="row" style="height:1.066667rem"></div>
+
+
+					<div class="row">
+						<div class="padding-null"></div>
+					</div>
 
 
 
 
+
+
+					<div class="row">
+						<div class="col-sm-4 col-xs-6 padding-null" style="height:5.333333rem;margin-bottom:5px;display:flex;justify-content:center;align-items:center;"
+							v-for="v in cates"
+						>
+
+							<div style="width:90%;height:94%;background:#FFF;display:flex;flex-direction:column;box-shadow:0 4px 6px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);cursor:pointer">
+								<div style="height:68%;">
+									<img :src="v.bg_img"  style="width:100%;height:100%" />
+								</div>
+
+								<div style="height:15%;display:flex;justify-content:center;align-items:center;font-size:14px;font-weight:bold;color:#616161">
+									{{v.name}}
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+		
 </template>
 
 <script type="text/javascript">
 	$$.component.index = $$.child({
+
 		el:"#vue_page_index",
+
+		EVENT:['init_data'],
+
 		data:{
-			// users:users,
-			ls:[],
+			cates:"",
 		},
 
-		init:function(){
-			var self = this
-			self.ls = users
+
+		methods:{
+			call_init_data:function(datas){
+				var self = this 
+				self.cates = datas.cates
+			},
+
 		},
 
 	})
 </script>
-
-
-
-
-
 

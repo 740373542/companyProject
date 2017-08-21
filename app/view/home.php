@@ -1,3 +1,4 @@
+
 <?php
 	require \view("header");
 	require \view("index");
@@ -9,7 +10,14 @@
 
 <script type="text/javascript">
 
-	var users = <?=$_users?>
+	$$.datas = {
+
+		user:<?=$_users?>,
+
+		cates:<?=$_cates?>,
+
+	}
+
 
 	$$.vue({
 		el:"#home",
@@ -21,6 +29,10 @@
 		},
 
 		init:function(){
+
+			window.setTimeout(function(){
+					$$.event.send('init_data',$$.datas)
+			},100)
 
 		},
 
@@ -48,3 +60,14 @@
 
 	})
 </script>	
+
+
+<style type="text/css">
+	.margin-null{
+		margin:0;
+	}
+
+	.padding-null{
+		padding:0;
+	}
+</style>
